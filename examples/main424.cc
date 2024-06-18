@@ -27,6 +27,15 @@ int main() {
   double pA_min = 1e2; 
   int nPts = 11;
 
+  const bool doLog = true;
+  std::string out = "main488_"+std::to_string(nEvent);
+  ofstream logBuf;
+  std::streambuf* oldCout;
+  if(doLog) {
+    oldCout = std::cout.rdbuf(logBuf.rdbuf());
+    logBuf.open((out == "" ? "pythia.log" : out + ".log"));
+  }
+
   Pythia pythia;
   // Use Angantyr even when initializing with pp.
   pythia.readString("HeavyIon:mode = 2");
@@ -62,6 +71,8 @@ int main() {
          << " Please validate your settings in main424.cmnd." << endl;
     return -1;
   }
+
+  if (doLog) std::cout.rdbuf(oldCout);
 
   // After initializing, we're done.
   return 0;
