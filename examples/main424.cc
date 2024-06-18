@@ -28,7 +28,7 @@ int main() {
   int nPts = 11;
 
   const bool doLog = true;
-  std::string out = "main488_"+std::to_string(nEvent);
+  std::string out = "main424";
   ofstream logBuf;
   std::streambuf* oldCout;
   if(doLog) {
