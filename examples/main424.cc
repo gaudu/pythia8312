@@ -41,8 +41,8 @@ int main() {
 
   // Variable energy parameters.
   pythia.readString("Beams:allowVariableEnergy = on");
-  pythia.settings.parm("HeavyIon:varECMMin", eCM_max);
-  pythia.settings.parm("HeavyIon:varECMMax", eCM_min);
+  pythia.settings.parm("HeavyIon:varECMMax", eCM_max);
+  pythia.settings.parm("HeavyIon:varECMMin", eCM_min);
   pythia.settings.parm("HeavyIon:varECMSigFitNPts", nPts);
 
   // Variable beam parameters.
