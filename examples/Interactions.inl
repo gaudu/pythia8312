@@ -32,11 +32,11 @@ Interaction(std::string_view dataPath) {
     double mB = pythia.particleData.m0(2212); // Angantyr does a weird mass per nucleus operation, therefore mB is always the proton mass (even for eCM calculations I was told)
     double eA_max = sqrt(pow2(pA_max) + pow2(mA_max));  
     double eA_min = sqrt(pow2(pA_min) + pow2(mA_min)); 
-    double eCM_max = sqrt(pow2(mA) + pow2(mB) + 2.* eA_max * mB);
-    double eCM_min = sqrt(pow2(mA) + pow2(mB) + 2.* eA_min * mB);
+    double eCM_max = sqrt(pow2(mA_max) + pow2(mB) + 2.* eA_max * mB);
+    double eCM_min = sqrt(pow2(mA_min) + pow2(mB) + 2.* eA_min * mB);
     pythia8_.readString("Beams:allowVariableEnergy = on");
-    pythia8_.settings.parm("HeavyIon:varECMMin", eCM_min);
     pythia8_.settings.parm("HeavyIon:varECMMax", eCM_max);
+    pythia8_.settings.parm("HeavyIon:varECMMin", eCM_min);
     pythia8_.settings.parm("HeavyIon:varECMSigFitNPts", nPts);  
     pythia8_.readString("Beams:frameType = 1");
     pythia8_.settings.parm("Beams:eCM", eCM_max);
@@ -69,7 +69,7 @@ void generateEvent(double sqrtS, int projectilePDG, int targetPDG) {
     vector<int> idB_list = {2212, 1000060120, 1000070140, 1000080160, 1000180400};
     auto itB = std::find(idB_list.begin(), idB_list.end(), targetPDG);
     if (itB != idB_list.end()) {
-        idA_switch = projectilePDG;
+        idB_switch = targetPDG;
     } else {
         throw std::runtime_error("This target is not (yet) in the pre-computed cross-section tables");
     }
