@@ -1,0 +1,531 @@
+
+ *------------------------------------------------------------------------------------* 
+ |                                                                                    | 
+ |  *------------------------------------------------------------------------------*  | 
+ |  |                                                                              |  | 
+ |  |                                                                              |  | 
+ |  |   PPP   Y   Y  TTTTT  H   H  III    A      Welcome to the Lund Monte Carlo!  |  | 
+ |  |   P  P   Y Y     T    H   H   I    A A     This is PYTHIA version 8.312      |  | 
+ |  |   PPP     Y      T    HHHHH   I   AAAAA    Last date of change: 23 May 2024  |  | 
+ |  |   P       Y      T    H   H   I   A   A                                      |  | 
+ |  |   P       Y      T    H   H  III  A   A    Now is 05 Jun 2024 at 11:50:04    |  | 
+ |  |                                                                              |  | 
+ |  |   Program documentation and an archive of historic versions is found on:     |  | 
+ |  |                                                                              |  | 
+ |  |                               https://pythia.org/                            |  | 
+ |  |                                                                              |  | 
+ |  |   PYTHIA is authored by a collaboration consisting of:                       |  | 
+ |  |                                                                              |  | 
+ |  |   Javira Altmann, Christian Bierlich, Naomi Cooke, Nishita Desai,            |  | 
+ |  |   Leif Gellersen, Ilkka Helenius, Philip Ilten, Leif Lonnblad,               |  | 
+ |  |   Stephen Mrenna, Christian Preuss, Torbjorn Sjostrand, Peter Skands,        |  | 
+ |  |   Marius Utheim, and Rob Verheyen.                                           |  | 
+ |  |                                                                              |  | 
+ |  |   The complete list of authors, including contact information and            |  | 
+ |  |   affiliations, can be found on https://pythia.org/.                         |  | 
+ |  |   Problems or bugs should be reported on email at authors@pythia.org.        |  | 
+ |  |                                                                              |  | 
+ |  |   The main program reference is C. Bierlich et al,                           |  | 
+ |  |   'A comprehensive guide to the physics and usage of Pythia 8.3',            |  | 
+ |  |   SciPost Phys. Codebases 8-r8.3 (2022) [arXiv:2203.11601 [hep-ph]]          |  | 
+ |  |                                                                              |  | 
+ |  |   PYTHIA is released under the GNU General Public Licence version 2 or later.|  | 
+ |  |   Please respect the MCnet Guidelines for Event Generator Authors and Users. |  | 
+ |  |                                                                              |  | 
+ |  |   Disclaimer: this program comes without any guarantees.                     |  | 
+ |  |   Beware of errors and use common sense when interpreting results.           |  | 
+ |  |                                                                              |  | 
+ |  |   Copyright (C) 2024 Torbjorn Sjostrand                                      |  | 
+ |  |                                                                              |  | 
+ |  |                                                                              |  | 
+ |  *------------------------------------------------------------------------------*  | 
+ |                                                                                    | 
+ *------------------------------------------------------------------------------------* 
+
+ *----------------------  Initializing Angantyr  ----------------------*
+ |                    We collide: p+ on p+                             |
+ |                                                                     |
+ |                    Below follows initialization                     |
+ |                    of sub-collisions.                               |
+ |                                                                     |
+ |                   //>________________________________               |
+ |          [########[]_________________________________>              |
+ |                   \\>                                               |
+ |                                                                     |
+ Angantyr Info: Initializing minimum bias processes.
+
+ *-------  PYTHIA Process Initialization  --------------------------*
+ |                                                                  |
+ | We collide p+ with p+ at a CM energy of 1.370e+05 GeV            |
+ |                                                                  |
+ |------------------------------------------------------------------|
+ |                                                    |             |
+ | Subprocess                                    Code |   Estimated |
+ |                                                    |    max (mb) |
+ |                                                    |             |
+ |------------------------------------------------------------------|
+ |                                                    |             |
+ | non-diffractive                                101 |   8.604e+01 |
+ | A B -> A B elastic                             102 |   3.491e+01 |
+ | A B -> X B single diffractive                  103 |   7.188e+00 |
+ | A B -> A X single diffractive                  104 |   7.188e+00 |
+ | A B -> X X double diffractive                  105 |   1.142e+01 |
+ | A B -> A X B central diffractive               106 |   0.000e+00 |
+ |                                                                  |
+ *-------  End PYTHIA Process Initialization -----------------------*
+
+ *-------  PYTHIA Flag + Mode + Parm + Word + FVec + MVec + PVec + WVec Settings (changes only)  ------------------* 
+ |                                                                                                                 | 
+ | Name                                          |                      Now |      Default         Min         Max | 
+ |                                               |                          |                                      | 
+ | Beams:allowIDAswitch                          |                       on |          off                         | 
+ | Beams:allowVariableEnergy                     |                       on |          off                         | 
+ | Beams:eA                                      |               1.0000e+10 |     7000.000         0.0             | 
+ | Beams:eB                                      |                  0.93827 |     7000.000         0.0             | 
+ | Beams:frameType                               |                        2 |            1           1           5 | 
+ | Check:epTolErr                                |                  0.10000 |   1.0000e-04                         | 
+ | HadronLevel:all                               |                      off |           on                         | 
+ | HadronLevel:Decay                             |                      off |           on                         | 
+ | HadronLevel:Hadronize                         |                      off |           on                         | 
+ | HeavyIon:SasdMpiInitFile                      |         main424.sasd.mpi | Angantyr.sasd.mpi                    | 
+ | HeavyIon:SasdMpiReuseInit                     |                        2 |            0           0           3 | 
+ | HeavyIon:SigFitInitFile                       |           main424.sigfit | Angantyr.sigfit                      | 
+ | HeavyIon:SigFitReuseInit                      |                        2 |            0           0           4 | 
+ | MultipartonInteractions:initFile              |              main424.mpi |  pp14000.mpi                         | 
+ | MultipartonInteractions:reuseInit             |                        2 |            0           0           3 | 
+ | Next:numberCount                              |                        0 |         1000           0             | 
+ | Next:numberShowEvent                          |                        0 |            1           0             | 
+ | Next:numberShowInfo                           |                        0 |            1           0             | 
+ | Next:numberShowLHA                            |                        0 |            1           0             | 
+ | Next:numberShowProcess                        |                        0 |            1           0             | 
+ | PartonLevel:FSR                               |                      off |           on                         | 
+ | PartonLevel:ISR                               |                      off |           on                         | 
+ | PartonLevel:MPI                               |                      off |           on                         | 
+ | SoftQCD:all                                   |                       on |          off                         | 
+ | Tune:ee                                       |                        0 |            7          -1           7 | 
+ | Tune:pp                                       |                        0 |           14          -1          34 | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Flag + Mode + Parm + Word + FVec + MVec + PVec + WVec Settings  -----------------------------* 
+
+ --------  PYTHIA Particle Data Table (changed only)  ------------------------------------------------------------------------------
+ 
+      id   name            antiName         spn chg col      m0        mWidth      mMin       mMax       tau0    res dec ext vis wid
+             no onMode   bRatio   meMode     products 
+
+ no particle data has been changed from its default value 
+
+ --------  End PYTHIA Particle Data Table  -----------------------------------------------------------------------------------------
+
+ Angantyr Info: Initializing secondary absorptive processes as single diffraction..
+
+ *-------  PYTHIA Process Initialization  --------------------------*
+ |                                                                  |
+ | We collide p+ with p+ at a CM energy of 1.370e+05 GeV            |
+ |                                                                  |
+ |------------------------------------------------------------------|
+ |                                                    |             |
+ | Subprocess                                    Code |   Estimated |
+ |                                                    |    max (mb) |
+ |                                                    |             |
+ |------------------------------------------------------------------|
+ |                                                    |             |
+ | A B -> X B single diffractive                  103 |   7.188e+00 |
+ | A B -> A X single diffractive                  104 |   7.188e+00 |
+ |                                                                  |
+ *-------  End PYTHIA Process Initialization -----------------------*
+
+ *-------  PYTHIA Flag + Mode + Parm + Word + FVec + MVec + PVec + WVec Settings (changes only)  ------------------* 
+ |                                                                                                                 | 
+ | Name                                          |                      Now |      Default         Min         Max | 
+ |                                               |                          |                                      | 
+ | Beams:allowIDAswitch                          |                       on |          off                         | 
+ | Beams:allowVariableEnergy                     |                       on |          off                         | 
+ | Beams:eA                                      |               1.0000e+10 |     7000.000         0.0             | 
+ | Beams:eB                                      |                  0.93827 |     7000.000         0.0             | 
+ | Beams:eCM                                     |               136986.913 |    14000.000         0.0             | 
+ | Beams:frameType                               |                        2 |            1           1           5 | 
+ | Check:epTolErr                                |                  0.10000 |   1.0000e-04                         | 
+ | Diffraction:mRefPomP                          |               136986.913 |    100.00000     1.00000             | 
+ | Diffraction:sigmaRefPomP                      |                 86.03825 |     10.00000     2.00000    40.00000 | 
+ | HadronLevel:all                               |                      off |           on                         | 
+ | HadronLevel:Decay                             |                      off |           on                         | 
+ | HadronLevel:Hadronize                         |                      off |           on                         | 
+ | HeavyIon:SasdMpiInitFile                      |         main424.sasd.mpi | Angantyr.sasd.mpi                    | 
+ | HeavyIon:SasdMpiReuseInit                     |                        2 |            0           0           3 | 
+ | HeavyIon:SigFitInitFile                       |           main424.sigfit | Angantyr.sigfit                      | 
+ | HeavyIon:SigFitReuseInit                      |                        2 |            0           0           4 | 
+ | MultipartonInteractions:ecmPow                |                      0.0 |      0.21500         0.0     0.50000 | 
+ | MultipartonInteractions:ecmRef                |               136986.913 |     7000.000     1.00000             | 
+ | MultipartonInteractions:initFile              |         main424.sasd.mpi |  pp14000.mpi                         | 
+ | MultipartonInteractions:pT0Ref                |                  4.32140 |      2.28000     0.50000    10.00000 | 
+ | MultipartonInteractions:reuseInit             |                        2 |            0           0           3 | 
+ | Next:numberCount                              |                        0 |         1000           0             | 
+ | Next:numberShowEvent                          |                        0 |            1           0             | 
+ | Next:numberShowInfo                           |                        0 |            1           0             | 
+ | Next:numberShowLHA                            |                        0 |            1           0             | 
+ | Next:numberShowProcess                        |                        0 |            1           0             | 
+ | PartonLevel:FSR                               |                      off |           on                         | 
+ | PartonLevel:ISR                               |                      off |           on                         | 
+ | PartonLevel:MPI                               |                      off |           on                         | 
+ | PDF:PomSet                                    |                       11 |            6                         | 
+ | SoftQCD:singleDiffractive                     |                       on |          off                         | 
+ | Tune:ee                                       |                        0 |            7          -1           7 | 
+ | Tune:pp                                       |                        0 |           14          -1          34 | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Flag + Mode + Parm + Word + FVec + MVec + PVec + WVec Settings  -----------------------------* 
+
+ --------  PYTHIA Particle Data Table (changed only)  ------------------------------------------------------------------------------
+ 
+      id   name            antiName         spn chg col      m0        mWidth      mMin       mMax       tau0    res dec ext vis wid
+             no onMode   bRatio   meMode     products 
+
+ no particle data has been changed from its default value 
+
+ --------  End PYTHIA Particle Data Table  -----------------------------------------------------------------------------------------
+
+ Angantyr Info: Initializing hadronisation processes.
+
+ *-------  PYTHIA Flag + Mode + Parm + Word + FVec + MVec + PVec + WVec Settings (changes only)  ------------------* 
+ |                                                                                                                 | 
+ | Name                                          |                      Now |      Default         Min         Max | 
+ |                                               |                          |                                      | 
+ | Beams:allowIDAswitch                          |                       on |          off                         | 
+ | Beams:allowVariableEnergy                     |                       on |          off                         | 
+ | Beams:eA                                      |               1.0000e+10 |     7000.000         0.0             | 
+ | Beams:eB                                      |                  0.93827 |     7000.000         0.0             | 
+ | Beams:frameType                               |                        2 |            1           1           5 | 
+ | Check:epTolErr                                |                  0.10000 |   1.0000e-04                         | 
+ | HadronLevel:Decay                             |                      off |           on                         | 
+ | HadronLevel:Hadronize                         |                      off |           on                         | 
+ | HeavyIon:mode                                 |                        2 |            1           1           2 | 
+ | HeavyIon:SasdMpiInitFile                      |         main424.sasd.mpi | Angantyr.sasd.mpi                    | 
+ | HeavyIon:SasdMpiReuseInit                     |                        2 |            0           0           3 | 
+ | HeavyIon:SigFitInitFile                       |           main424.sigfit | Angantyr.sigfit                      | 
+ | HeavyIon:SigFitReuseInit                      |                        2 |            0           0           4 | 
+ | MultipartonInteractions:initFile              |              main424.mpi |  pp14000.mpi                         | 
+ | MultipartonInteractions:reuseInit             |                        2 |            0           0           3 | 
+ | Next:numberCount                              |                        0 |         1000           0             | 
+ | Next:numberShowEvent                          |                        0 |            1           0             | 
+ | Next:numberShowInfo                           |                        0 |            1           0             | 
+ | Next:numberShowLHA                            |                        0 |            1           0             | 
+ | Next:numberShowProcess                        |                        0 |            1           0             | 
+ | PartonLevel:all                               |                      off |           on                         | 
+ | PartonLevel:FSR                               |                      off |           on                         | 
+ | PartonLevel:ISR                               |                      off |           on                         | 
+ | PartonLevel:MPI                               |                      off |           on                         | 
+ | ProcessLevel:all                              |                      off |           on                         | 
+ | Tune:ee                                       |                        0 |            7          -1           7 | 
+ | Tune:pp                                       |                        0 |           14          -1          34 | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Flag + Mode + Parm + Word + FVec + MVec + PVec + WVec Settings  -----------------------------* 
+
+ --------  PYTHIA Particle Data Table (changed only)  ------------------------------------------------------------------------------
+ 
+      id   name            antiName         spn chg col      m0        mWidth      mMin       mMax       tau0    res dec ext vis wid
+             no onMode   bRatio   meMode     products 
+
+ no particle data has been changed from its default value 
+
+ --------  End PYTHIA Particle Data Table  -----------------------------------------------------------------------------------------
+
+
+ --------  PYTHIA Event Listing  (complete event)  ---------------------------------------------------------------------------------
+ 
+    no         id  name            status     mothers   daughters     colours      p_x        p_y        p_z         e          m 
+     0         90  (system)           -11     0     0     0     0     0     0  0.000e+00  0.000e+00  9.383e+09  9.383e+09  4.948e+05
+     1       2212  (p+)               -12     0     0     3     0     0     0  0.000e+00  0.000e+00  9.383e+09  9.383e+09  9.383e-01
+     2 1000070140  (14N)              -12     0     0     4     0     0     0  0.000e+00  0.000e+00  0.000e+00  1.305e+01  1.305e+01
+     3       2212  (p+)               -13     1     0     5     0     0     0  0.000e+00  0.000e+00  1.000e+10  1.000e+10  9.383e-01
+     4       2112  (n0)               -13     2     0     6     0     0     0  0.000e+00  0.000e+00 -1.126e-06  9.383e-01  9.383e-01
+     5       2212  p+                  14     3     0     0     0     0     0 -5.018e-02 -1.340e-01  1.000e+10  1.000e+10  9.383e-01
+     6    9902210  (p_dif+)           -15     4     0     7     9     0     0  5.018e-02  1.340e-01  6.283e+01  6.377e+01  1.090e+01
+     7         21  g                   24     6     0     0     0   202   201  4.650e-02  1.242e-01  5.823e+01  5.823e+01  0.000e+00
+     8          2  u                   63     6     0     0     0   201     0 -7.337e-01  5.698e-01  2.122e-01  1.007e+00  3.250e-01
+     9       1103  dd_1                63     6     0     0     0     0   202  7.374e-01 -5.600e-01  4.388e+00  4.531e+00  6.500e-01
+    10 1000070139  NucRem              14     2     0     0     0     0     0 -5.510e-10 -1.471e-09 -6.173e+08 -6.173e+08 -1.223e+05
+                                   Charge sum:  8.000           Momentum sum:  0.000e+00  0.000e+00  9.383e+09  9.383e+09  4.948e+05
+
+ --------  End PYTHIA Event Listing  -----------------------------------------------------------------------------------------------
+
+ --------  PYTHIA Event Listing  (complete event)  ---------------------------------------------------------------------------------
+ 
+    no         id  name            status     mothers   daughters     colours      p_x        p_y        p_z         e          m 
+     0         90  (system)           -11     0     0     0     0     0     0 -5.170e-10 -1.380e-09  9.383e+09  9.383e+09  4.948e+05
+     1       2212  (p+)               -12     0     0     3     0     0     0 -5.170e-10 -1.380e-09  9.383e+09  9.383e+09  9.383e-01
+     2 1000070140  (14N)              -12     0     0     4     0     0     0 -7.190e-19 -1.920e-18  0.000e+00  1.305e+01  1.305e+01
+     3       2212  (p+)               -13     1     0     5     0     0     0 -5.510e-10 -1.471e-09  1.000e+10  1.000e+10  9.383e-01
+     4       2112  (n0)               -13     2     0     6     0     0     0 -5.170e-20 -1.380e-19 -1.126e-06  9.383e-01  9.383e-01
+     5       2212  p+                  14     3     0     0     0     0     0 -5.018e-02 -1.340e-01  1.000e+10  1.000e+10  9.383e-01
+     6    9902210  (p_dif+)           -15     4     0     7     9     0     0  5.018e-02  1.340e-01  6.283e+01  6.377e+01  1.090e+01
+     7         21  g                   24     6     0     0     0   202   201  4.650e-02  1.242e-01  5.823e+01  5.823e+01  0.000e+00
+     8          2  u                   63     6     0     0     0   201     0 -7.337e-01  5.698e-01  2.122e-01  1.007e+00  3.250e-01
+     9       1103  dd_1                63     6     0     0     0     0   202  7.374e-01 -5.600e-01  4.388e+00  4.531e+00  6.500e-01
+    10 1000070139  (NucRem)           -14     2     0     0     0     0     0 -5.170e-10 -1.380e-09 -6.173e+08 -6.173e+08 -1.223e+05
+                                   Charge sum:  1.000           Momentum sum:  0.000e+00  0.000e+00  1.000e+10  1.000e+10  1.370e+05
+
+ --------  End PYTHIA Event Listing  -----------------------------------------------------------------------------------------------
+ PYTHIA Warning in MultipartonInteractions::pTfirst: weight above unity
+ PYTHIA Error in Pythia::check: unmatched particle energy/momentum/mass
+ PYTHIA Error in Pythia::forceHadronLevel: check of event revealed problems
+ PYTHIA Warning in MultipartonInteractions::pTfirst: weight above unity
+ PYTHIA Warning in Pythia::check: not quite matched particle energy/momentum/mass
+ PYTHIA Error in Pythia::check: energy-momentum not conserved
+
+ *-----  HeavyIon Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | non-diffractive                                101 |          85         85         85 |   1.613e+02  5.649e+00 |
+ | A B -> A B elastic                             102 |           1          1          1 |   2.036e+00  5.473e+01 |
+ | A B -> X B single diffractive                  103 |          11         11         11 |   2.286e+01  1.699e+01 |
+ | A B -> A X single diffractive                  104 |           3          3          3 |   8.583e+00  4.523e+01 |
+ |                                                    |                                   |                        |
+ | sum                                                |         723        100        100 |   1.948e+02  5.357e+00 |
+ | (Estimated total cross section)                    |         723          0          0 |   4.305e+02  3.380e+01 |
+ | (Estimated non-diffractive cross section)          |         723          0          0 |   2.353e+02  1.832e+00 |
+ |                                                                                                                 |
+ *-----  End HeavyIon Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |     29   Error in Pythia::check: energy-momentum not conserved                                                  | 
+ |    173   Error in Pythia::check: unmatched particle energy/momentum/mass                                        | 
+ |     45   Error in Pythia::forceHadronLevel: check of event revealed problems                                    | 
+ |     75   Warning (MBIAS) in MultipartonInteractions::pTfirst: weight above unity                                | 
+ |    270   Warning (SASD) in MultipartonInteractions::pTfirst: weight above unity                                 | 
+ |     52   Warning in Pythia::check: not quite matched particle energy/momentum/mass                              | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+
+ number of elastic events = 0
+
+
+  2024-06-05 11:50       remnant A number
+
+        3.75*10^ 1               7      
+        3.60*10^ 1               X      
+        3.45*10^ 1               X      
+        3.30*10^ 1               X      
+        3.15*10^ 1               X      
+        3.00*10^ 1               X      
+        2.85*10^ 1               X      
+        2.70*10^ 1               X      
+        2.55*10^ 1               X      
+        2.40*10^ 1               X      
+        2.25*10^ 1               X      
+        2.10*10^ 1               X      
+        1.95*10^ 1               X      
+        1.80*10^ 1               X      
+        1.65*10^ 1               X      
+        1.50*10^ 1              XX      
+        1.35*10^ 1              XX      
+        1.20*10^ 1              XX      
+        1.05*10^ 1              XX      
+        0.90*10^ 1             XXX      
+        0.75*10^ 1    7        XXX      
+        0.60*10^ 1    X     XXXXXX      
+        0.45*10^ 1    X 7   XXXXXX      
+        0.30*10^ 1  X X3X  XXXXXXX      
+        0.15*10^ 1  X XXX77XXXXXXX      
+
+          Contents                      
+            *10^ 1  00000000000013000000
+            *10^ 0  30724113666957000000
+            *10^-1  00000000000000000000
+            *10^-2  00000000000000000000
+
+          Low edge  -                   
+            *10^ 1  00000000000111111111
+            *10^ 0  00123456789012345678
+            *10^-1  55555555555555555555
+
+   Entries  =       100   xMin =    -0.500   Underflow =     0.000   Mean   =     9.900   RMS  =     3.859
+   SumW(in) =   100.000   xMax =    19.500   Overflow  =     0.000   Median =    11.633   nEff =   100.000
+
+
+  2024-06-05 11:50       momentum fraction full final state
+
+        1.00*10^ 2                                    X                                                                 
+        0.96*10^ 2                                    X                                                                 
+        0.92*10^ 2                                    X                                                                 
+        0.88*10^ 2                                    X                                                                 
+        0.84*10^ 2                                    X                                                                 
+        0.80*10^ 2                                    X                                                                 
+        0.76*10^ 2                                    X                                                                 
+        0.72*10^ 2                                    X                                                                 
+        0.68*10^ 2                                    X                                                                 
+        0.64*10^ 2                                    X                                                                 
+        0.60*10^ 2                                    X                                                                 
+        0.56*10^ 2                                    X                                                                 
+        0.52*10^ 2                                    X                                                                 
+        0.48*10^ 2                                    X                                                                 
+        0.44*10^ 2                                    X                                                                 
+        0.40*10^ 2                                    X                                                                 
+        0.36*10^ 2                                    X                                                                 
+        0.32*10^ 2                                    X                                                                 
+        0.28*10^ 2                                    X                                                                 
+        0.24*10^ 2                                    X                                                                 
+        0.20*10^ 2                                    X                                                                 
+        0.16*10^ 2                                    X                                                                 
+        0.12*10^ 2                                    X                                                                 
+        0.08*10^ 2                                    X                                                                 
+        0.04*10^ 2                                    X                                                                 
+
+          Contents                                                                                                      
+            *10^ 2  0000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000
+            *10^ 1  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+            *10^ 0  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+            *10^-1  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+          Low edge                                                                                                      
+            *10^ 0  0000000000000000000000000000000000000000000000000111111111111111111111111111111111111111111111111111
+            *10^-1  8888888888888888888888889999999999999999999999999000000000000000000000000011111111111111111111111112
+            *10^-2  0011222334445566677888990001122233444556667788899000112223344455666778889900011222334445566677888990
+
+   Entries  =       100   xMin =     0.800   Underflow =     0.000   Mean   = 9.380e-01   RMS  = 1.110e-16
+   SumW(in) =   100.000   xMax =     1.200   Overflow  =     0.000   Median = 9.380e-01   nEff =   100.000
+
+
+  2024-06-05 11:50       momentum fraction target remnant
+
+        6.50*10^ 1        2                                                                                             
+        6.25*10^ 1        X                                                                                             
+        6.00*10^ 1        X                                                                                             
+        5.75*10^ 1        X                                                                                             
+        5.50*10^ 1        X                                                                                             
+        5.25*10^ 1        X                                                                                             
+        5.00*10^ 1        X                                                                                             
+        4.75*10^ 1        X                                                                                             
+        4.50*10^ 1        X                                                                                             
+        4.25*10^ 1        X                                                                                             
+        4.00*10^ 1        X                                                                                             
+        3.75*10^ 1        X                                                                                             
+        3.50*10^ 1        X                                                                                      6      
+        3.25*10^ 1        X                                                                                      X      
+        3.00*10^ 1        X                                                                                      X      
+        2.75*10^ 1        X                                                                                      X      
+        2.50*10^ 1        X                                                                                      X      
+        2.25*10^ 1        X                                                                                      X      
+        2.00*10^ 1        X                                                                                      X      
+        1.75*10^ 1        X                                                                                      X      
+        1.50*10^ 1        X                                                                                      X      
+        1.25*10^ 1        X                                                                                      X      
+        1.00*10^ 1        X                                                                                      X      
+        0.75*10^ 1        X                                                                                      X      
+        0.50*10^ 1        X                                                                                      X      
+        0.25*10^ 1        X                                                                                      X      
+
+          Contents                                                                                                      
+            *10^ 1  0000006000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000000
+            *10^ 0  0000003000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000
+            *10^-1  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+            *10^-2  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+          Low edge                                                                                                      
+            *10^-1  0000000000111111111122222222223333333333444444444455555555556666666666777777777788888888889999999999
+            *10^-2  0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+            *10^-3  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+   Entries  =        97   xMin =    0.0000   Underflow =     0.000   Mean   = 3.699e-01   RMS  = 4.151e-01
+   SumW(in) =    97.000   xMax =    1.0000   Overflow  =     0.000   Median = 6.770e-02   nEff =    97.000
+
+
+  2024-06-05 11:50       momentum fraction without target remnant
+
+        4.50*10^ 1                                                   3                                                  
+        4.35*10^ 1                                                   X                                                  
+        4.20*10^ 1                                                   X                                                  
+        4.05*10^ 1                                                   X                                                  
+        3.90*10^ 1                                                   X                                                  
+        3.75*10^ 1                                                   X                                                  
+        3.60*10^ 1                                                   X                                                  
+        3.45*10^ 1                                                   X                                                  
+        3.30*10^ 1                                                   X                                                  
+        3.15*10^ 1                                                   X                                                  
+        3.00*10^ 1                                                   X                                                  
+        2.85*10^ 1                                                   X                                                  
+        2.70*10^ 1                                                   X                                                  
+        2.55*10^ 1                                                   X                                                  
+        2.40*10^ 1                                                   X                                                  
+        2.25*10^ 1                                                   X                                                  
+        2.10*10^ 1                                                   X                                                  
+        1.95*10^ 1                                                   X7                                                 
+        1.80*10^ 1                                                   XX                                                 
+        1.65*10^ 1                                                   XX                                                 
+        1.50*10^ 1                                                   XX                                                 
+        1.35*10^ 1                                                   XX                                                 
+        1.20*10^ 1                                                   XX                                                 
+        1.05*10^ 1                                                   XX                                                 
+        0.90*10^ 1                                                   XX                                                 
+        0.75*10^ 1                                                   XX                                                 
+        0.60*10^ 1                                                   XX                                                 
+        0.45*10^ 1                                                   XX                                                 
+        0.30*10^ 1                                    X              XX                                                 
+        0.15*10^ 1                                    X              XX                                                 
+
+          Contents                                                                                                      
+            *10^ 1  0000000000000000000000000000000000000000000000000410000000000000000000000000000000000000000000000000
+            *10^ 0  0000000000000000000000000000000000300000000000000490000000000000000000000000000000000000000000000000
+            *10^-1  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+            *10^-2  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+          Low edge                                                                                                      
+            *10^ 0  0000000000000000000000000000000000000000000000000111111111111111111111111111111111111111111111111111
+            *10^-1  8888888888888888888888889999999999999999999999999000000000000000000000000011111111111111111111111112
+            *10^-2  0011222334445566677888990001122233444556667788899000112223344455666778889900011222334445566677888990
+
+   Entries  =       100   xMin =     0.800   Underflow =    34.000   Mean   = 9.964e-01   RMS  = 1.287e-02
+   SumW(in) =    66.000   xMax =     1.200   Overflow  =     0.000   Median = 9.987e-01   nEff =    66.000
+
+
+  2024-06-05 11:50       momentum fraction after correction
+
+        6.00*10^ 1                                                    5                                                 
+        5.80*10^ 1                                                    X                                                 
+        5.60*10^ 1                                                    X                                                 
+        5.40*10^ 1                                                    X                                                 
+        5.20*10^ 1                                                    X                                                 
+        5.00*10^ 1                                                    X                                                 
+        4.80*10^ 1                                                    X                                                 
+        4.60*10^ 1                                                    X                                                 
+        4.40*10^ 1                                                    X                                                 
+        4.20*10^ 1                                                   5X                                                 
+        4.00*10^ 1                                                   XX                                                 
+        3.80*10^ 1                                                   XX                                                 
+        3.60*10^ 1                                                   XX                                                 
+        3.40*10^ 1                                                   XX                                                 
+        3.20*10^ 1                                                   XX                                                 
+        3.00*10^ 1                                                   XX                                                 
+        2.80*10^ 1                                                   XX                                                 
+        2.60*10^ 1                                                   XX                                                 
+        2.40*10^ 1                                                   XX                                                 
+        2.20*10^ 1                                                   XX                                                 
+        2.00*10^ 1                                                   XX                                                 
+        1.80*10^ 1                                                   XX                                                 
+        1.60*10^ 1                                                   XX                                                 
+        1.40*10^ 1                                                   XX                                                 
+        1.20*10^ 1                                                   XX                                                 
+        1.00*10^ 1                                                   XX                                                 
+        0.80*10^ 1                                                   XX                                                 
+        0.60*10^ 1                                                   XX                                                 
+        0.40*10^ 1                                                   XX                                                 
+        0.20*10^ 1                                                   XX                                                 
+
+          Contents                                                                                                      
+            *10^ 1  0000000000000000000000000000000000000000000000000450000000000000000000000000000000000000000000000000
+            *10^ 0  0000000000000000000000000000000000000000000000000190000000000000000000000000000000000000000000000000
+            *10^-1  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+            *10^-2  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+          Low edge                                                                                                      
+            *10^ 0  0000000000000000000000000111111111111111111111111111111111111111111111111111111111111111111111111111
+            *10^-1  9999999999999999999999999000000000000000000000000000000000000000000000000000000000000000000000000000
+            *10^-2  9999999999999999999999999000000000000000000000000000000000000000000000000000111111111111111111111111
+
+   Entries  =       100   xMin =     0.990   Underflow =     0.000   Mean   =     1.000   RMS  =     0.000
+   SumW(in) =   100.000   xMax =     1.010   Overflow  =     0.000   Median =     1.000   nEff =   100.000
