@@ -23,36 +23,15 @@ using namespace Pythia8;
 
 int main() {
 
-  double pA_max = 1e12;
-  double pA_min = 1e2; 
-  int nPts = 11;
-
-  const bool doLog = true;
-  std::string out = "main424";
-  ofstream logBuf;
-  std::streambuf* oldCout;
-  if(doLog) {
-    oldCout = std::cout.rdbuf(logBuf.rdbuf());
-    logBuf.open((out == "" ? "pythia.log" : out + ".log"));
-  }
-
   Pythia pythia;
   // Use Angantyr even when initializing with pp.
   pythia.readString("HeavyIon:mode = 2");
 
-  double mA_max = pythia.particleData.m0(3322); // Xi0 heaviest
-  double mA_min = pythia.particleData.m0(111); // pi0 lightest
-  double mB = pythia.particleData.m0(2212);
-  double eA_max = sqrt(pow2(pA_max) + pow2(mA_max)); 
-  double eA_min = sqrt(pow2(pA_min) + pow2(mA_min)); 
-  double eCM_max = sqrt(pow2(mA_max) + pow2(mB) + 2.* eA_max * mB);
-  double eCM_min = sqrt(pow2(mA_min) + pow2(mB) + 2.* eA_min * mB);
-
   // Variable energy parameters.
   pythia.readString("Beams:allowVariableEnergy = on");
-  pythia.settings.parm("HeavyIon:varECMMax", eCM_max);
-  pythia.settings.parm("HeavyIon:varECMMin", eCM_min);
-  pythia.settings.parm("HeavyIon:varECMSigFitNPts", nPts);
+  pythia.readString("HeavyIon:varECMMin = 10");
+  pythia.readString("HeavyIon:varECMMax = 1000000");
+  pythia.readString("HeavyIon:varECMSigFitNPts = 6");
 
   // Variable beam parameters.
   pythia.readString("Beams:allowIDASwitch = on");
@@ -71,8 +50,6 @@ int main() {
          << " Please validate your settings in main424.cmnd." << endl;
     return -1;
   }
-
-  if (doLog) std::cout.rdbuf(oldCout);
 
   // After initializing, we're done.
   return 0;
