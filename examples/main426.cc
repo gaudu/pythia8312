@@ -74,8 +74,7 @@ int main() {
   pythia.readString("HeavyIon:SigFitInitFile = main426.sigfit");
 
   if (!pythia.init()) {
-    cout << " Pythia failed to initialize." << endl
-         << " Please validate your settings in main424.cmnd." << endl;
+    cout << " Pythia failed to initialize." << endl;
     return -1;
   }
   
