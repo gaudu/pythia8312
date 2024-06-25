@@ -1,17 +1,17 @@
-// main424.cc is a part of the PYTHIA event generator.
+// main426.cc is a part of the PYTHIA event generator.
 // Copyright (C) 2024 Torbjorn Sjostrand.
 // PYTHIA is licenced under the GNU GPL v2 or later, see COPYING for details.
 // Please respect the MCnet Guidelines, see GUIDELINES for details.
 
 // Authors: Marius Utheim <marius.m.utheim@jyu.fi>;
+//          Chloé Gaudu <gaudu@uni-wuppertal.de>
 
 // Keywords: hadron-ion collisions, optimization
 
 // The purpose of this example is to generate initialization files that can
 // be used to speed up initialization in hadron-hadron or hadron-ion runs.
-// By default, it produces data for energies from 10 to 10^6 GeV. All
-// hadron-nucleon and hadron-ion interactions are possible. It can be
-// configured by modifying main424.cmnd.
+// It produces data for energies from 10^2 to 10^12 GeV. 
+// All hadron-nucleon and hadron-ion interactions are possible. 
 // Initialization data is saved in all.mpi, all.sasd.mpi, and all.sigfit.
 
 // After initializing, it is possible to change energy and beam types on
@@ -26,6 +26,12 @@ int main() {
   double pA_max = 1e12;
   double pA_min = 1e2; 
   int nPts = 11;
+
+  vector<int> idA_list = {111, 211, -211, 311, 321, -321, 130, 310,
+                          2212, -2212, 2112, -2112,
+                          3122, 3212, 3222, 3112, 3322, 
+                          1000020040, 1000070140, 1000260560
+  };
 
   const bool doLog = true;
   std::string out = "main426";
@@ -56,6 +62,7 @@ int main() {
 
   // Variable beam parameters.
   pythia.readString("Beams:allowIDASwitch = on");
+  pythia.settings.mvec("Beams:idAList", idA_list);
 
   // Specify where to save. If you set reuseInit = 2, the old files will be
   // replaced overwritten they already exist.
