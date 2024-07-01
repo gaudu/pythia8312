@@ -20,11 +20,10 @@ int main() {
   int nEvents = 1e6;
   constexpr int nCases = 1; //2; 
   vector<string> caseLabels = { "158" }; //, "350" };
-  string out = "main1003_-211_1000060120_frameType2_158";
+  std::string out = "main1003_-211_1000060120_frameType2_158";
 
   // logfile initialization
   const bool doLog = true;
-  std::string out = "main1011_"+idA_map[std::string(argv[1])]+"_"+idB_map[std::string(argv[2])]+"_1e"+std::string(argv[3])+"_"+std::to_string(nEvents);
   ofstream logBuf;
   std::streambuf* oldCout;
   if(doLog) {
