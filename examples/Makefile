@@ -133,7 +133,7 @@ else
 endif
 
 # RIVET with optional ROOT and ROOT user library.
-main144: $(PYTHIA) $$@.cc $(if $(filter true,$(ROOT_USE)),$$@.so)
+main144 main1003: $(PYTHIA) $$@.cc $(if $(filter true,$(ROOT_USE)),$$@.so)
 ifeq ($(RIVET_USE),true)
 	$(CXX) $@.cc -o $@ -w -Wl,-rpath,./ $(RIVET_OPTS)\
 	 $(if $(filter true,$(ROOT_USE)),$@.so $(ROOT_OPTS))
