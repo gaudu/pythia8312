@@ -46,13 +46,14 @@ int main() {
   // Use Angantyr even when initializing with pp.
   pythia.readString("HeavyIon:mode = 2");
 
-  double mA_max = pythia.particleData.m0(3322); // Xi0 heaviest
-  double mA_min = pythia.particleData.m0(111); // pi0 lightest
-  double mB = pythia.particleData.m0(2212);
+  double mA_max = pythia.particleData.m0(1000260560); // 56Fe heaviest projectile
+  double mA_min = pythia.particleData.m0(111);        // pi0 lightest projectile
+  double mB_max = pythia.particleData.m0(1000260560); // 56Fe heaviest target
+  double mB_min = pythia.particleData.m0(2212);       // p lightest target
   double eA_max = sqrt(pow2(pA_max) + pow2(mA_max)); 
   double eA_min = sqrt(pow2(pA_min) + pow2(mA_min)); 
-  double eCM_max = sqrt(pow2(mA_max) + pow2(mB) + 2.* eA_max * mB);
-  double eCM_min = sqrt(pow2(mA_min) + pow2(mB) + 2.* eA_min * mB);
+  double eCM_max = sqrt(pow2(mA_max) + pow2(mB_max) + 2.* eA_max * mB_max);
+  double eCM_min = sqrt(pow2(mA_min) + pow2(mB_min) + 2.* eA_min * mB_min);
 
   // Variable energy parameters.
   pythia.readString("Beams:allowVariableEnergy = on");
