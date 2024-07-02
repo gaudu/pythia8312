@@ -23,8 +23,8 @@ using namespace Pythia8;
 
 int main() {
 
-  double pA_max = 1e12;
-  double pA_min = 1e2; 
+  /*double pA_max = 1e12;
+  double pA_min = 1e2;*/
   int nPts = 11;
 
   vector<int> idA_list = {111, 211, -211, 311, 321, -321, 130, 310,
@@ -34,7 +34,7 @@ int main() {
   };
 
   const bool doLog = true;
-  std::string out = "main426";
+  std::string out = "main426_eCM_10_1.5e7";
   ofstream logBuf;
   std::streambuf* oldCout;
   if(doLog) {
@@ -46,14 +46,17 @@ int main() {
   // Use Angantyr even when initializing with pp.
   pythia.readString("HeavyIon:mode = 2");
 
-  double mA_max = pythia.particleData.m0(1000260560); // 56Fe heaviest projectile
+  /*double mA_max = pythia.particleData.m0(1000260560); // 56Fe heaviest projectile
   double mA_min = pythia.particleData.m0(111);        // pi0 lightest projectile
   double mB_max = pythia.particleData.m0(1000260560); // 56Fe heaviest target
   double mB_min = pythia.particleData.m0(2212);       // p lightest target
   double eA_max = sqrt(pow2(pA_max) + pow2(mA_max)); 
   double eA_min = sqrt(pow2(pA_min) + pow2(mA_min)); 
   double eCM_max = sqrt(pow2(mA_max) + pow2(mB_max) + 2.* eA_max * mB_max);
-  double eCM_min = sqrt(pow2(mA_min) + pow2(mB_min) + 2.* eA_min * mB_min);
+  double eCM_min = sqrt(pow2(mA_min) + pow2(mB_min) + 2.* eA_min * mB_min);*/
+
+  double eCM_max = 1.5e7;
+  double eCM_min = 10;
 
   // Variable energy parameters.
   pythia.readString("Beams:allowVariableEnergy = on");
