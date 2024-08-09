@@ -30,7 +30,7 @@ int main() {
   Pythia pythia;
 
   pythia.readString("Beams:allowIDASwitch = on");
-  double idA = idA_list[4];
+  double idA = idA_list[0];
   double idB = idB_list[1];
   pythia.settings.mode("Beams:idA", idA);
   pythia.settings.mode("Beams:idB", idB);
@@ -57,20 +57,26 @@ int main() {
   pythia.readString("Stat:showPartonLevel = off");
 
   if (!pythia.init()) {
+    if (doLog) std::cout.rdbuf(oldCout);  
     throw std::runtime_error("Pythia::Interaction: Initialization failed!");
     return -1;
   }
 
-  double const idA_pythia = 321;
-  double const idB_pythia = 2212;
-  double const eCM_pythia = sqrt(pow2(pythia.particleData.m0(idA_pythia)) 
-                            + pow2(pythia.particleData.m0(idB_pythia)) 
-                            + 2.*400000*pythia.particleData.m0(idB_pythia));
+  /*if (!pythia.next()) {
+      if (doLog) std::cout.rdbuf(oldCout);
+      throw std::runtime_error("Pythia::Interaction: Interaction failed!");
+  }*/
+  
+  double idA_pythia = 321;
+  double idB_pythia = 2212;
+  double eCM_pythia = sqrt(pow2(pythia.particleData.m0(idA_pythia)) + pow2(pythia.particleData.m0(idB_pythia))+ 2.*400000.*pythia.particleData.m0(idB_pythia));
   pythia.setBeamIDs(idA_pythia, idB_pythia);
+  std::cout << "eCM_pythia = " << eCM_pythia << std::endl; 
   pythia.setKinematics(eCM_pythia);
 
   if (!pythia.next()) {
-      throw std::runtime_error("Pythia::Interaction: interaction failed!");
+      if (doLog) std::cout.rdbuf(oldCout);
+      throw std::runtime_error("Pythia::Interaction: Interaction failed!");
   }
 
   pythia.event.list();
