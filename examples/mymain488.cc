@@ -19,7 +19,7 @@ int main() {
   vector<int> idB_list = {2212, 1000070140, 1000080160, 1000180400}; 
 
   const bool doLog = true;
-  std::string out = "mymain488_c8_Kp_p_proj400TeV";
+  std::string out = "mymain488_c8_p_14N_proj1PeV";
   ofstream logBuf;
   std::streambuf* oldCout;
   if(doLog) {
@@ -67,9 +67,10 @@ int main() {
       throw std::runtime_error("Pythia::Interaction: Interaction failed!");
   }*/
   
-  double idA_pythia = 321;
-  double idB_pythia = 2212;
-  double eCM_pythia = sqrt(pow2(pythia.particleData.m0(idA_pythia)) + pow2(pythia.particleData.m0(idB_pythia))+ 2.*400000.*pythia.particleData.m0(idB_pythia));
+  double idA_pythia = 2212;
+  double idB_pythia = 1000070140;
+  double elab_pythia = 1000000.;
+  double eCM_pythia = sqrt(pow2(pythia.particleData.m0(idA_pythia)) + pow2(pythia.particleData.m0(idB_pythia))+ 2.*elab_pythia*pythia.particleData.m0(idB_pythia));
   pythia.setBeamIDs(idA_pythia, idB_pythia);
   std::cout << "eCM_pythia = " << eCM_pythia << std::endl; 
   pythia.setKinematics(eCM_pythia);
