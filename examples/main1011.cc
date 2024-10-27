@@ -2,7 +2,7 @@
 
 // Keyword: analysis; hA collisions; AA collisions; cross-section
 
-// Usage: ./main1011 Beams:idA Beams:idB mag_order_elab(projectile)
+// Usage: ./main1011 Beams:idA Beams:idB p_lab(projectile)
 // can be run using ./run_pleiades_xsec_script_8312 on Pleiades
 
 #include "Pythia8/HeavyIons.h"
@@ -25,7 +25,8 @@ std::vector<K> getMapKeys(const std::map<K, V>& inputMap) {
 using namespace Pythia8;
 
 int main(int argc, char *argv[]) {
-
+#include <stdio.h>
+#include <stdlib.h>
   if (argc<=1) {
     std::cout << "argc<=1" << '\n';
     if (argc==5) {
@@ -54,7 +55,7 @@ int main(int argc, char *argv[]) {
 
   // logfile initialization
   const bool doLog = true;
-  std::string out = "main1011_"+idA_map[std::string(argv[1])]+"_"+idB_map[std::string(argv[2])]+"_1e"+std::string(argv[3])+"_"+std::to_string(nEvents);
+  std::string out = "main1011_sNN_"+idA_map[std::string(argv[1])]+"_"+idB_map[std::string(argv[2])]+"_"+std::string(argv[3])+"_"+std::to_string(nEvents);
   ofstream logBuf;
   std::streambuf* oldCout;
   if(doLog) {
@@ -68,15 +69,17 @@ int main(int argc, char *argv[]) {
   pythia.settings.mode("Beams:idA", idA);
   pythia.settings.mode("Beams:idB", idB);
   
-  double e_lab = pow(10, std::stoi(argv[3])); // GeV
-  double m_projectile = pythia.particleData.m0(idA); // GeV
-  double m_target = pythia.particleData.m0(idB); // GeV
-  double p_lab = sqrt(e_lab*e_lab - m_projectile*m_projectile);
-  double calculated_eCM = sqrt((e_lab + m_target)*(e_lab + m_target) - p_lab*p_lab);
-  std::cout << "calculated_eCM = " << calculated_eCM << '\n'; // GeV
-  pythia.readString("Beams:frameType = 1");pythia.readString("Beams:frameType = 1");
-  pythia.settings.parm("Beams:eCM", calculated_eCM);
-
+  double pNow = std::stod(argv[3]); // GeV
+  if (idA == 1000260560) {
+      pNow /= 56.0;
+  } else if (idA == 1000070140) {
+      pNow /= 14.0;
+  } else if (idA == 1000020040) {
+      pNow /= 4.0;
+  }
+  double eCMNow = ( Vec4(0., 0., pNow, pNow * sqrt(1 + pow2(0.938 / pNow)))
+                 + Vec4(0., 0., 0., 0.938) ).mCalc();
+  pythia.settings.parm("Beams:eCM", eCMNow);
   pythia.readString("SoftQCD:all = on");
   // use Angantyr for minimum-bias pp collisions
   //pythia.readString("HeavyIon:mode = 2");
@@ -105,7 +108,8 @@ int main(int argc, char *argv[]) {
     return 1; 
   }
 
-  xz << "elab" << '\t' << "1e"+std::string(argv[3]) << '\n';
+  xz << "plab" << '\t' << argv[3] << '\n';
+  xz << "s_NN" << '\t' << eCMNow << '\n';
   xz << "proj_id" << '\t' << argv[1] << '\n';
   xz << "targ_id" << '\t' << argv[2] << '\n';
   xz << "sig_tot" << '\t' << pythia.info.sigmaGen(0) << '\n';
