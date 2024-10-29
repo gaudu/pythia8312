@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 
   // logfile initialization
   const bool doLog = true;
-  std::string out = "main1011_sNN_"+idA_map[std::string(argv[1])]+"_"+idB_map[std::string(argv[2])]+"_"+std::string(argv[3])+"_"+std::to_string(nEvents);
+  std::string out = "main1011_sNN_v2_"+idA_map[std::string(argv[1])]+"_"+idB_map[std::string(argv[2])]+"_"+std::string(argv[3])+"_"+std::to_string(nEvents);
   ofstream logBuf;
   std::streambuf* oldCout;
   if(doLog) {
@@ -70,13 +70,6 @@ int main(int argc, char *argv[]) {
   pythia.settings.mode("Beams:idB", idB);
   
   double pNow = std::stod(argv[3]); // GeV
-  if (idA == 1000260560) {
-      pNow /= 56.0;
-  } else if (idA == 1000070140) {
-      pNow /= 14.0;
-  } else if (idA == 1000020040) {
-      pNow /= 4.0;
-  }
   double eCMNow = ( Vec4(0., 0., pNow, pNow * sqrt(1 + pow2(0.938 / pNow)))
                  + Vec4(0., 0., 0., 0.938) ).mCalc();
   pythia.settings.parm("Beams:eCM", eCMNow);
