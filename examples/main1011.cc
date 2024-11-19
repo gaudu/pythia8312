@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
 
   // logfile initialization
   const bool doLog = true;
-  std::string out = "main1011_sNN_v2_"+idA_map[std::string(argv[1])]+"_"+idB_map[std::string(argv[2])]+"_pNow"+to_scientific_string(std::atof(argv[3]))+"_nEvents"+to_scientific_string(nEvents);
+  std::string out = "main1011_"+idA_map[std::string(argv[1])]+"_"+idB_map[std::string(argv[2])]+"_pNow"+to_scientific_string(std::atof(argv[3]))+"_nEvents"+to_scientific_string(nEvents);
   ofstream logBuf;
   std::streambuf* oldCout;
   if(doLog) {
