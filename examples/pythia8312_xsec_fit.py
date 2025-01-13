@@ -113,18 +113,18 @@ def plot_data_to_pdf(data_dict, fit_data, output_pdf):
             sig_inel = np.array([entry[1]['sig_inel'] for entry in data_list])
             err_inel = np.array([entry[1]['err_inel'] for entry in data_list])
 
-            plt.figure(figsize=(10, 6))
-            plt.errorbar(momenta, sig_inel, yerr=err_inel, label="σ_inel", fmt='^-', capsize=3)
+            plt.figure(figsize=(5, 3))
+            plt.errorbar(momenta, sig_inel, yerr=err_inel, fmt='o', color='tab:orange', capsize=2, label="Pythia 8.312")
 
             # add fit to the plot if available
             if (projectile, target) in fit_data:
                 fit_momenta = fit_data[(projectile, target)]['momenta']
                 fit_values = fit_data[(projectile, target)]['fit_values']
-                plt.plot(fit_momenta, fit_values, label="σ_inel fit", linestyle='--', color='red')
+                plt.plot(fit_momenta, fit_values, '-', color='tab:blue', label="Pythia 8.312 fit ")
 
             plt.xscale('log')
-            plt.xlabel("Momentum (GeV/c)", fontsize=12)
-            plt.ylabel("Cross-section (mb)", fontsize=12)
+            plt.xlabel(r"P$_\mathrm{lab}$ / GeV", fontsize=13)
+            plt.ylabel(r"$\sigma^\mathrm{inel}$ / mb", fontsize=13)
             plt.title(f"Cross-sections for {projectile} on {target}", fontsize=14)
             plt.legend()
             plt.grid(True, which="both", linestyle="--", linewidth=0.5)
